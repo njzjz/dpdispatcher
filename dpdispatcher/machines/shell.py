@@ -76,6 +76,16 @@ class Shell(Machine):
         ret, stdin, stdout, stderr = self.context.block_call(
             f"if ps -p {job_id} > /dev/null && ! (ps -o command -p {job_id} | grep defunct >/dev/null) ; then echo 1; fi"
         )
+        # debug
+        print(ret, stdin, stdout, stderr)
+        ret, stdin, stdout, stderr = self.context.block_call(
+            f"ps -p {job_id}"
+        )
+        print(ret, stdin, stdout, stderr)
+        ret, stdin, stdout, stderr = self.context.block_call(
+            f"ps -o command -p {job_id}"
+        )
+        print(ret, stdin, stdout, stderr)
         if ret != 0:
             err_str = stderr.read().decode("utf-8")
             raise RuntimeError(
