@@ -17,9 +17,6 @@ pbs_script_header_template = """
 
 
 class PBS(Machine):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
     def gen_script(self, job):
         pbs_script = super().gen_script(job)
         return pbs_script
