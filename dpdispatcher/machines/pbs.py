@@ -188,9 +188,6 @@ sge_script_header_template = """
 
 
 class SGE(PBS):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
     def gen_script_header(self, job):
         ### Ref:https://softpanorama.org/HPC/PBS_and_derivatives/Reference/pbs_command_vs_sge_commands.shtml
         # resources.number_node is not used in SGE
